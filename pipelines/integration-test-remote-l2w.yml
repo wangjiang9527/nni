@@ -36,9 +36,8 @@ jobs:
       runOptions: commands
       commands: |
         echo $(NNI_RELEASE)
-        conda activate l2w && \
-          python -m pip uninstall nni && \
-          python -m pip install --upgrade pip setuptools
+        conda activate l2w && python -m pip uninstall nni
+        conda activate l2w && python -m pip install --upgrade pip setuptools
       failOnStdErr: false
     displayName: Prepare on Windows worker
 
@@ -63,11 +62,9 @@ jobs:
       sshEndpoint: $(worker)
       runOptions: inline
       inline: |
-        cd /tmp/nnitest/$(Build.BuildId)
-        conda activate l2w
-        python setup.py build_ts
-        python setup.py bdist_wheel -p win_amd64
-        python -m pip install dist/nni-$(NNI_RELEASE)-py3-none-win_amd64.whl
+        conda activate l2w && cd /tmp/nnitest/$(Build.BuildId) && python setup.py build_ts
+        conda activate l2w && cd /tmp/nnitest/$(Build.BuildId) && python setup.py bdist_wheel -p win_amd64
+        conda activate l2w && python -m pip install /tmp/nnitest/$(Build.BuildId)/dist/nni-$(NNI_RELEASE)-py3-none-win_amd64.whl
       failOnStdErr: false
     displayName: Install NNI on Windows worker
 
