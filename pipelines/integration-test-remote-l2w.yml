@@ -6,7 +6,7 @@ schedules:
     include: [ master ]
 
 variables:
-  worker: nni-ci-gpu-04-w
+  worker: remote_nni-ci-gpu-04-w
 
 # variables set on VSO: (for security concern)
 #   manager_ip
