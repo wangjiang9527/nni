@@ -36,6 +36,12 @@ jobs:
       runOptions: commands
       commands: |
         echo $(NNI_RELEASE)
+        $Env:NNI_RELEASE="$(NNI_RELEASE)"
+        echo 'Test 1 pass'
+        $Env:NNI_RELEASE="$(NNI_RELEASE)" ; echo 'hi'
+        echo 'Test 2 pass'
+        echo 'hello' ; $Env:NNI_RELEASE="$(NNI_RELEASE)" ; echo 'world'
+        echo 'Test 3 pass'
         conda activate l2w ; python -m pip uninstall --yes nni
         conda activate l2w ; python -m pip install --upgrade pip setuptools
       failOnStdErr: false
