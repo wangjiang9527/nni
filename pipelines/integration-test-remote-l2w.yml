@@ -36,11 +36,11 @@ jobs:
       runOptions: commands
       commands: |
         echo $(NNI_RELEASE)
-        $Env:NNI_RELEASE="$(NNI_RELEASE)"
+        Set-Item Env:NNI_RELEASE "$(NNI_RELEASE)"
         echo 'Test 1 pass'
-        $Env:NNI_RELEASE="$(NNI_RELEASE)" ; echo 'hi'
+        Set-Item Env:NNI_RELEASE "$(NNI_RELEASE)" ; echo 'hi'
         echo 'Test 2 pass'
-        echo 'hello' ; $Env:NNI_RELEASE="$(NNI_RELEASE)" ; echo 'world'
+        echo 'hello' ; Set-Item Env:NNI_RELEASE "$(NNI_RELEASE)" ; echo 'world'
         echo 'Test 3 pass'
         conda activate l2w ; python -m pip uninstall --yes nni
         conda activate l2w ; python -m pip install --upgrade pip setuptools
@@ -61,8 +61,8 @@ jobs:
       sshEndpoint: $(worker)
       runOptions: commands
       commands: |
-        conda activate l2w ; $Env:NNI_RELEASE="$(NNI_RELEASE)" ; cd /tmp/nnitest/$(Build.BuildId) ; python setup.py build_ts
-        conda activate l2w ; $Env:NNI_RELEASE="$(NNI_RELEASE)" ; cd /tmp/nnitest/$(Build.BuildId) ; python setup.py bdist_wheel -p win_amd64
+        conda activate l2w ; Set-Item Env:NNI_RELEASE "$(NNI_RELEASE)" ; cd /tmp/nnitest/$(Build.BuildId) ; python setup.py build_ts
+        conda activate l2w ; Set-Item Env:NNI_RELEASE "$(NNI_RELEASE)" ; cd /tmp/nnitest/$(Build.BuildId) ; python setup.py bdist_wheel -p win_amd64
         conda activate l2w ; python -m pip install /tmp/nnitest/$(Build.BuildId)/dist/nni-$(NNI_RELEASE)-py3-none-win_amd64.whl
       failOnStdErr: false
     displayName: Install NNI on Windows worker
