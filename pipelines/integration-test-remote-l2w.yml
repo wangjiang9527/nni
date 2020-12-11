@@ -33,12 +33,12 @@ jobs:
   - task: SSH@0
     inputs:
       sshEndpoint: $(worker)
-      runOptions: inline
-      inline: |
+      runOptions: commands
+      commands: |
         echo $(NNI_RELEASE)
-        conda activate l2w
-        python -m pip uninstall nni
-        python -m pip install --upgrade pip setuptools
+        conda activate l2w && \
+          python -m pip uninstall nni && \
+          python -m pip install --upgrade pip setuptools
       failOnStdErr: false
     displayName: Prepare on Windows worker
 
