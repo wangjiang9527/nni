@@ -60,8 +60,8 @@ jobs:
   - task: SSH@0
     inputs:
       sshEndpoint: $(worker)
-      runOptions: inline
-      inline: |
+      runOptions: commands
+      commands: |
         conda activate l2w && cd /tmp/nnitest/$(Build.BuildId) && python setup.py build_ts
         conda activate l2w && cd /tmp/nnitest/$(Build.BuildId) && python setup.py bdist_wheel -p win_amd64
         conda activate l2w && python -m pip install /tmp/nnitest/$(Build.BuildId)/dist/nni-$(NNI_RELEASE)-py3-none-win_amd64.whl
