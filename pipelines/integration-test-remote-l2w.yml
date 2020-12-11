@@ -36,7 +36,7 @@ jobs:
       runOptions: commands
       commands: |
         echo $(NNI_RELEASE)
-        conda activate l2w && python -m pip uninstall nni
+        conda activate l2w && python -m pip uninstall --yes nni
         conda activate l2w && python -m pip install --upgrade pip setuptools
       failOnStdErr: false
     displayName: Prepare on Windows worker
