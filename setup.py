@@ -152,7 +152,7 @@ def _find_requirements_txt():
 
 def _find_node_files():
     if not os.path.exists('nni_node'):
-        if release and 'build_ts' not in sys.argv:
+        if release and 'build_ts' not in sys.argv and 'clean' not in sys.argv:
             sys.exit('ERROR: To build a release version, run "python setup.py build_ts" first')
         return []
     files = []
