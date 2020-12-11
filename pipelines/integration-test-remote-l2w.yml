@@ -34,7 +34,7 @@ jobs:
     inputs:
       sshEndpoint: $(worker)
       runOptions: inline
-      commands: |
+      inline: |
         echo $(NNI_RELEASE)
         conda activate l2w
         python -m pip uninstall nni
@@ -62,7 +62,7 @@ jobs:
     inputs:
       sshEndpoint: $(worker)
       runOptions: inline
-      commands: |
+      inline: |
         cd /tmp/nnitest/$(Build.BuildId)
         conda activate l2w
         python setup.py build_ts
