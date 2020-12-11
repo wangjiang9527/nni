@@ -26,22 +26,15 @@ jobs:
       echo "NNI version: ${NNI_RELEASE}"
       echo "Build docker image: $(build_docker_image)"
 
-      python3 -m pip install -U --upgrade pip setuptools
+      python3 -m pip install --upgrade pip setuptools
     displayName: Prepare
 
   - script: |
       set -e
       python3 setup.py build_ts
       python3 setup.py bdist_wheel -p manylinux1_x86_64
-      python3 -m pip install -U dist/nni-${NNI_RELEASE}-py3-none-manylinux1_x86_64.whl
+      python3 -m pip install dist/nni-${NNI_RELEASE}-py3-none-manylinux1_x86_64.whl[SMAC,BOHB]
     displayName: Build and install NNI
-
-  - script: |
-      set -e
-      sudo apt-get install swig -y
-      nnictl package install --name=SMAC
-      nnictl package install --name=BOHB
-    displayName: Install extra tuners
 
   - script: |
       set -e
