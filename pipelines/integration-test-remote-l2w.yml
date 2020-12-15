@@ -43,8 +43,8 @@ jobs:
         echo 'Test 2 pass'
         echo 'hello' & set NNI_RELEASE="$(NNI_RELEASE)" & echo 'world'
         echo 'Test 3 pass'
-        #conda activate l2w & python -m pip uninstall --yes nni
-        #conda activate l2w & python -m pip install --upgrade pip setuptools
+        ;conda activate l2w & python -m pip uninstall --yes nni
+        ;conda activate l2w & python -m pip install --upgrade pip setuptools
       failOnStdErr: false
     displayName: Prepare on Windows worker
 
