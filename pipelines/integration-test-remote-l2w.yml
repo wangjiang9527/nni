@@ -27,8 +27,8 @@ jobs:
       echo "Working directory: ${PWD}"
       echo "NNI version: ${NNI_RELEASE}"
       echo "Build ID: $(Build.BuildId)"
-      python3 -m pip install --upgrade pip setuptools
-      python3 setup.py clean --all
+      #python3 -m pip install --upgrade pip setuptools
+      #python3 setup.py clean --all
     displayName: Prepare on Linux manager
 
   - task: SSH@0
