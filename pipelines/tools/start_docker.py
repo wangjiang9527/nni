@@ -9,7 +9,7 @@ import random
 import socket
 import sys
 
-import _common import build_wheel, run_command, set_variable
+from _common import build_wheel, run_command, set_variable
 
 # find idle port
 port = random.randint(10000, 20000)

@@ -1,6 +1,6 @@
 import sys
 
-import _common import run_command
+from _common import run_command
 
 name = sys.argv[1]
 run_command(f'docker container stop {name')
