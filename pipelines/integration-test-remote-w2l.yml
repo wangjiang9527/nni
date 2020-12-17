@@ -51,13 +51,13 @@ jobs:
 
   - powershell: |
       cd test
-      python nni_test/nnitest/generate_ts_config.py \
-          --ts remote \
-          --remote_reuse false \
-          --remote_user nni \
-          --remote_host $(worker_ip) \
-          --remote_port $(docker_port) \
-          --remote_pwd $(password_in_docker) \
+      python nni_test/nnitest/generate_ts_config.py `
+          --ts remote `
+          --remote_reuse false `
+          --remote_user nni `
+          --remote_host $(worker_ip) `
+          --remote_port $(docker_port) `
+          --remote_pwd $(password_in_docker) `
           --nni_manager_ip $(manager_ip)
       Get-Content config/training_service.yml
       python nni_test/nnitest/run_tests.py --config config/integration_tests.yml --ts remote --exclude cifar10
