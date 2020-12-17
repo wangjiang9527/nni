@@ -12,7 +12,7 @@ def get_config_directory() -> Path:
     Get NNI config directory.
     Create it if not exist.
     """
-    is sys.prefix != sys.base_prefix or Path(sys.prefix, 'conda-meta').is_dir():
+    if sys.prefix != sys.base_prefix or Path(sys.prefix, 'conda-meta').is_dir():
         config_dir = Path(sys.prefix, 'nni')
     elif sys.platform == 'win32':
         config_dir = Path(os.environ['APPDATA'], 'nni')
