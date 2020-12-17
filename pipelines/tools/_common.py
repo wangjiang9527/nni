@@ -21,7 +21,7 @@ def build_wheel():
 
 def run_command(command, **extra_environ):
     if isinstance(command, str):
-        command = cmd.split()
+        command = command.split()
     subprocess.run(
         command,
         cwd = nni_root,
