@@ -47,9 +47,9 @@ jobs:
       set -e
       docker login -u nnidev -p $(docker_hub_password)
       echo '## Build docker image ##'
-      docker build --build-arg NNI_RELEASE=${NNI_RELEASE} -t nnidev/nni-it-pai:latest .
+      docker build --build-arg NNI_RELEASE=${NNI_RELEASE} -t nnidev/nni-nightly .
       echo '## Upload docker image ##'
-      docker push nnidev/nni-it-pai:latest
+      docker push nnidev/nni-nightly
     condition: eq(variables['build_docker_image'], 'true')
     displayName: Build and upload docker image
 
@@ -61,7 +61,7 @@ jobs:
           --pai_reuse false \
           --pai_host https://ne.openpai.org \
           --pai_user $(pai_user) \
-          --nni_docker_image nnidev/nni-it-pai:latest \
+          --nni_docker_image nnidev/nni-nightly \
           --pai_storage_config_name confignfs-data \
           --pai_token $(pai_token) \
           --nni_manager_nfs_mount_path /home/quzha/mnt-pai-ne/shinyang3 \
