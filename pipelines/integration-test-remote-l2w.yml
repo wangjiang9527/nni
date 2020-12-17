@@ -34,7 +34,6 @@ jobs:
   - task: CopyFilesOverSSH@0
     inputs:
       sshEndpoint: $(worker)
-      sourceFolder: .
       targetFolder: /tmp/nnitest/$(Build.BuildId)
       overwrite: true
     displayName: Copy source files to Windows worker
