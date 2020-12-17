@@ -21,6 +21,7 @@ def build_wheel():
     return f'dist/nni-{version}-py3-none-{os_spec}.whl'
 
 def run_command(command, **extra_environ):
+    print('# run command:', command)
     if isinstance(command, str):
         command = command.split()
     subprocess.run(
@@ -32,4 +33,5 @@ def run_command(command, **extra_environ):
     )
 
 def set_variable(key, value):
+    print('# set variable:', key, value)
     print(f'##vso[task.setvariable variable={key}]{value}')
