@@ -27,8 +27,8 @@ jobs:
       echo "Working directory: ${PWD}"
       echo "NNI version: ${NNI_RELEASE}"
       echo "Build ID: $(Build.BuildId)"
-      #python3 -m pip install --upgrade pip setuptools
-      #python3 setup.py clean --all
+      python3 -m pip install --upgrade pip setuptools
+      python3 setup.py clean --all
     displayName: Prepare on Linux manager
 
   - task: SSH@0
@@ -43,8 +43,8 @@ jobs:
         echo 'Test 2 pass'
         echo 'hello' & set NNI_RELEASE="$(NNI_RELEASE)" & echo 'world'
         echo 'Test 3 pass'
-        ;conda activate l2w & python -m pip uninstall --yes nni
-        ;conda activate l2w & python -m pip install --upgrade pip setuptools
+        conda activate l2w & python -m pip uninstall --yes nni
+        conda activate l2w & python -m pip install --upgrade pip setuptools
       failOnStdErr: false
     displayName: Prepare on Windows worker
 
@@ -79,7 +79,7 @@ jobs:
       set -e
       cd examples/tuners/customized_tuner
       python3 setup.py develop --user
-      nnictl package install .
+      nnictl algo register --meta meta_file.yml
     displayName: Install customized tuner
 
   - script: |

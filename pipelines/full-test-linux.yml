@@ -41,7 +41,7 @@ jobs:
       set -e
       cd examples/tuners/customized_tuner
       python3 setup.py develop --user
-      nnictl package install .
+      nnictl algo register --meta meta_file.yml
     displayName: Install customized tuner
 
   - script: |
