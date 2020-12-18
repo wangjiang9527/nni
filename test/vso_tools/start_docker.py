@@ -20,7 +20,6 @@ while True:
     sock.close()
     port = random.randint(10000, 20000)
 
-build_wheel()
 run_command(f'docker build --build-arg NNI_RELEASE={sys.argv[1]} -t nni-nightly .')
 run_command(f'docker run -d -p {port}:22 --name {sys.argv[2]} nni-nightly')
 set_variable('docker_port', port)
